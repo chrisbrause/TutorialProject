@@ -1,0 +1,309 @@
+swagger: '2.0'
+info:
+  version: v1
+  title: TutorialAPIforvideo
+  description: Making an API in the API Builder
+host: 'localhost:2002'
+basePath: /TutorialProject
+schemes:
+  - https
+  - http
+produces:
+  - application/json
+paths:
+  /PopulationInformations/v1:
+    get:
+      tags:
+        - PopulationInformation
+      description: >-
+        Gets all PopulationInformations from the system that the user has access
+        to
+      operationId: getPopulationInformation
+      produces:
+        - application/json
+      x-swagger-router-controller: PopulationInformation
+      responses:
+        '200':
+          description: PopulationInformation response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PopulationInformationsv1'
+        '404':
+          description: PopulationInformation response
+          schema:
+            type: object
+        '500':
+          description: PopulationInformation response
+          schema:
+            type: object
+      parameters:
+        - name: revision
+          in: header
+          description: Needed Revision
+          required: true
+          type: string
+          default: R1
+    post:
+      tags:
+        - PopulationInformation
+      description: >-
+        Posts all PopulationInformations from the system that the user has
+        access to
+      operationId: postPopulationInformation
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      x-swagger-router-controller: PopulationInformation
+      responses:
+        '200':
+          description: PopulationInformation response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PopulationInformationsv1'
+        '404':
+          description: PopulationInformation response
+          schema:
+            type: object
+        '500':
+          description: PopulationInformation response
+          schema:
+            type: object
+      parameters:
+        - name: PopulationInformations/v1
+          in: body
+          schema:
+            $ref: '#/definitions/PopulationInformationsv1'
+        - name: revision
+          in: header
+          description: Needed Revision
+          required: true
+          type: string
+          default: R1
+  '/PopulationInformations/v1/{Age}':
+    get:
+      tags:
+        - PopulationInformation
+      description: >-
+        Gets all PopulationInformations from the system that the user has access
+        to
+      operationId: getPopulationInformationById
+      produces:
+        - application/json
+      x-swagger-router-controller: PopulationInformation
+      responses:
+        '200':
+          description: PopulationInformation response
+          schema:
+            type: object
+            $ref: '#/definitions/PopulationInformationsv1'
+        '404':
+          description: PopulationInformation response
+          schema:
+            type: object
+        '500':
+          description: PopulationInformation response
+          schema:
+            type: object
+      parameters:
+        - name: Age
+          in: path
+          description: Path Parameter
+          type: string
+          required: true
+        - name: revision
+          in: header
+          description: Needed Revision
+          required: true
+          type: string
+          default: R1
+    put:
+      tags:
+        - PopulationInformation
+      description: >-
+        Puts all PopulationInformations from the system that the user has access
+        to
+      operationId: putPopulationInformation
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      x-swagger-router-controller: PopulationInformation
+      responses:
+        '200':
+          description: PopulationInformation response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PopulationInformationsv1'
+        '404':
+          description: PopulationInformation response
+          schema:
+            type: object
+        '500':
+          description: PopulationInformation response
+          schema:
+            type: object
+      parameters:
+        - name: PopulationInformations/v1
+          in: body
+          schema:
+            $ref: '#/definitions/PopulationInformationsv1'
+        - name: Age
+          in: path
+          description: Path Parameter
+          type: string
+          required: true
+        - name: revision
+          in: header
+          description: Needed Revision
+          required: true
+          type: string
+          default: R1
+    patch:
+      tags:
+        - PopulationInformation
+      description: >-
+        Patchs all PopulationInformations from the system that the user has
+        access to
+      operationId: patchPopulationInformation
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      x-swagger-router-controller: PopulationInformation
+      responses:
+        '200':
+          description: PopulationInformation response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PopulationInformationsv1'
+        '404':
+          description: PopulationInformation response
+          schema:
+            type: object
+        '500':
+          description: PopulationInformation response
+          schema:
+            type: object
+      parameters:
+        - name: PopulationInformations/v1
+          in: body
+          schema:
+            $ref: '#/definitions/patchPopulationInformationsv1'
+        - name: Age
+          in: path
+          description: Path Parameter
+          type: string
+          required: true
+        - name: revision
+          in: header
+          description: Needed Revision
+          required: true
+          type: string
+          default: R1
+    delete:
+      tags:
+        - PopulationInformation
+      description: >-
+        Deletes all PopulationInformations from the system that the user has
+        access to
+      operationId: deletePopulationInformation
+      produces:
+        - application/json
+      consumes:
+        - application/json
+      x-swagger-router-controller: PopulationInformation
+      responses:
+        '204':
+          description: PopulationInformation response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/PopulationInformationsv1'
+        '404':
+          description: PopulationInformation response
+          schema:
+            type: object
+        '500':
+          description: PopulationInformation response
+          schema:
+            type: object
+      parameters:
+        - name: Age
+          in: path
+          description: Path Parameter
+          type: string
+          required: true
+        - name: revision
+          in: header
+          description: Needed Revision
+          required: true
+          type: string
+          default: R1
+definitions:
+  ApiError:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
+  PopulationInformationsv1:
+    type: object
+    properties:
+      Age:
+        type: integer
+        format: int32
+      Zip Codes:
+        type: string
+        format: ''
+    required:
+      - Age
+      - Zip Codes
+  patchPopulationInformationsv1:
+    type: object
+    properties:
+      Zip Codes:
+        type: string
+        format: ''
+responses:
+  Standard500ErrorResponse:
+    description: An unexpected error occured.
+    schema:
+      $ref: '#/definitions/ApiError'
+  PersonDoesNotExistResponse:
+    description: Person does not exist.
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  gateway: datapower-gateway
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:8080'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)
+          tls-profile: ''
+          secure-gateway: false
+    catch: []
+securityDefinitions:
+  Bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+security:
+  - Bearer: []
